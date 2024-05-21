@@ -1,7 +1,8 @@
-@extends('layouts.guest')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container my-5">
-        <h1>Home pubblica</h1>
+
+        <h1>Home Dashboard</h1>
     </div>
 @endsection
