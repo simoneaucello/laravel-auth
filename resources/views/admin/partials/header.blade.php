@@ -4,7 +4,10 @@
         <div class="container-fluid">
             <div class="d-flex">
                 <a href=" {{ route('admin.home') }} " class="navbar-brand">Home</a>
-                <a href=" {{ route('home') }} " target="_blank" class="nav-link pt-2">Vai al sito</a>
+                <a href=" {{ route('home') }} " target="_blank" class="nav-link pt-2 me-3 btn ">Vai al
+                    sito</a>
+                <a href=" {{ route('admin.projects.index') }} " target="_blank" class="nav-link pt-2 ">I miei
+                    progetti</a>
             </div>
             <div class="d-flex align-items-center">
                 <form class="d-flex me-3" role="search">
