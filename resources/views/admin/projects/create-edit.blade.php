@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container my-5">
-        <h1 class="text-warning mb-5"> Modifica Progetto </h1>
+        <h1 class="text-warning mb-5"> {{ $mod_add_project }} </h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">

@@ -25,22 +25,28 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $mod_add_project = 'Inserisci nuovo progetto:';
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
         // stampo il form di creazione nuovo fumetto
-        return view('admin.projects.create-edit', compact('method', 'route', 'project'));
+        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-        // prima di inserire un nuovo progetto verifico che non ci sia già
-        // SE esiste ritorno alla index con un messaggio di errore
-        // SE non esiste lo salvo e ritorno alla index con un messaggio di success
+        $form_data = $request->all();
 
+        $new_project = new Project();
+
+        $form_data['slug'] = Helper::generateSlug($form_data['title'], new Project());
+        $new_project->fill($form_data);
+        $new_project->save();
+
+        return redirect()->route('admin.projects.show', $new_project);
     }
 
     /**
@@ -56,9 +62,10 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $mod_add_project = 'Modifica progetto:';
         $method = 'PUT';
         $route = route('admin.projects.update', $project);
-        return view('admin.projects.create-edit', compact('method', 'route', 'project'));
+        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project'));
     }
 
     /**

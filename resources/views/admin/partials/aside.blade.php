@@ -10,7 +10,7 @@
                     Elenco progetti</a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-circle-plus"></i>
+                <a href="{{ route('admin.projects.create') }}"><i class="fa-solid fa-circle-plus"></i>
                     Nuovo progetto</a>
             </li>
             <li>
@@ -18,7 +18,7 @@
                     Gestione tecnologie</a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-list-check"></i>
+                <a href="{{ route('admin.types.index') }}"><i class="fa-solid fa-list-check"></i>
                     Gestione tipologie</a>
             </li>
         </ul>
