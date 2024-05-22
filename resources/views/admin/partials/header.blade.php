@@ -1,6 +1,6 @@
 <header>
 
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-dark navbar-dark text-white">
         <div class="container-fluid">
             <div class="d-flex">
                 <a href=" {{ route('admin.home') }} " class="navbar-brand">Home</a>
