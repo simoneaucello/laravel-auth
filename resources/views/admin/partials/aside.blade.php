@@ -6,7 +6,7 @@
                     Home</a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-list-ul"></i>
+                <a href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-list-ul"></i>
                     Elenco progetti</a>
             </li>
             <li>
@@ -14,12 +14,12 @@
                     Nuovo progetto</a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-list-check"></i>
+                <a href="{{ route('admin.technologies.index') }}"><i class="fa-solid fa-list-check"></i>
                     Gestione tecnologie</a>
             </li>
             <li>
                 <a href="#"><i class="fa-solid fa-list-check"></i>
-                    Gestione tipi</a>
+                    Gestione tipologie</a>
             </li>
         </ul>
     </nav>
