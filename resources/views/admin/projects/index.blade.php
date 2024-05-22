@@ -24,8 +24,11 @@
                         <td>{{ $project->description }}</td>
                         <td>{{ $project->prog_lang }}</td>
                         <td>
-                            <button class="btn btn-warning"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                            <a href="{{ route('admin.projects.show', $project) }}"
+                                class="card-link btn bg-success text-white"> <i class="fa-solid fa-circle-info"></i></a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning"><i
+                                    class="fa-solid fa-pencil"></i></a>
+                            @include('admin.partials.formdelete')
 
                         </td>
                     </tr>

@@ -22,7 +22,7 @@ class ProjectsTableSeeder extends Seeder
 
             $new_project->title = $project['title'];
             $new_project->description = $project['description'];
-            $new_project->slug = Helper::generateSlug($project, Project::class);
+            $new_project->slug = Helper::generateSlug($project['title'], Project::class);
             $new_project->image = $project['image'];
             $new_project->prog_lang = implode(' | ', $project['prog_lang']);
 
