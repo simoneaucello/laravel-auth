@@ -19,7 +19,7 @@
             <tbody>
                 @foreach ($projects as $project)
                     <tr>
-                        <th><img class="cover-img" src="{{ $project->image }}" alt="{{ $project->title }}"></th>
+                        <td><img class="cover-img" src="{{ $project->image }}" alt="{{ $project->title }}"></td>
                         <td class="fw-bold">{{ $project->title }}</td>
                         <td>{{ $project->description }}</td>
                         <td>{{ $project->prog_lang }}</td>

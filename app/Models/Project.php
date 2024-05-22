@@ -12,7 +12,8 @@ class Project extends Model
     protected $fillable = [
         'title',
         'description',
+        'slug',
         'image',
-        'prog_lang'
+        'prog_lang',
     ];
 }
