@@ -29,7 +29,7 @@
 
         <form action="{{ route('admin.types.store') }}" method="POST" class="d-flex">
             @csrf
-            <input class="form-control me-2" type="search" placeholder="Nuova tecnologia" aria-label="Search"
+            <input class="form-control me-2" type="search" placeholder="Nuova tipologia" aria-label="Search"
                 name="name">
             <button class="btn btn-outline-success" type="submit">Invia</button>
         </form>

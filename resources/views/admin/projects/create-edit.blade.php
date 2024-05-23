@@ -19,7 +19,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ $route }}" method="POST"> @csrf
+        <form action="{{ $route }}" method="POST" enctype="multipart/form-data"> @csrf
             @method($method)
 
             <div class="mb-3 bg-body-tertiary rounded p-2">
@@ -35,9 +35,8 @@
             </div>
             <div class="mb-3 bg-body-tertiary rounded p-2">
                 <label for="description" class="form-label">Descrizione:</label>
-                <input name="description" type="text" class="form-control @error('description') is-invalid @enderror"
-                    id="description" aria-describedby="emailHelp"
-                    value=" {{ old('description', $project?->description) }} ">
+                <textarea name="description" type="text" class="form-control @error('description') is-invalid @enderror"
+                    id="description" aria-describedby="emailHelp">{{ old('description', $project?->description) }}</textarea>
 
                 @error('description')
                     <small class="text-danger fw-bold">
@@ -47,8 +46,12 @@
             </div>
             <div class="mb-3 bg-body-tertiary rounded p-2">
                 <label for="image" class="form-label">Immagine:</label>
-                <input name="image" type="text" class="form-control @error('image') is-invalid @enderror"
-                    id="image" aria-describedby="emailHelp" value=" {{ old('image', $project?->image) }} ">
+                <input name="image" type="file" class="form-control @error('image') is-invalid @enderror "
+                    id="image" aria-describedby="emailHelp" onchange="showImage(event)">
+
+                <img class="thumb" id="thumb" src="{{ asset('storage/' . $project?->image) }}" alt=""
+                    onerror="this.src='/img/no-image.png'">
+                <p> {{ $project?->image_original_name }} </p>
 
                 @error('image')
                     <small class="text-danger fw-bold">
@@ -68,8 +71,17 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn bg-dark text-white">INVIA</button>
+            <button type="submit" class="btn bg-success text-white">AGGIUNGI</button>
+            <button type="reset" class="btn bg-warning">RESET</button>
 
         </form>
     </div>
+
+    <script>
+        function showImage(event) {
+            // console.log(URL.createObjectURL(event.target.files[0]);
+            const thumb = document.getElementById('thumb');
+            thumb.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
 @endsection

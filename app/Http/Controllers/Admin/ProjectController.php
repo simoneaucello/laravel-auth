@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Functions\Helper;
 use App\Http\Requests\ProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -15,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::orderBy('id', 'desc')->paginate(15);
 
         return view('admin.projects.index', compact('projects'));
     }
@@ -39,10 +40,22 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
         $form_data = $request->all();
+        // verifico l'esistenza della chiave 'image' in form_data
+        if (array_key_exists('image', $form_data)) {
+            //salvo l'immagine nello storage e ottengo il percorso
+            $image_path = Storage::put('uploads', $form_data['image']);
+
+            // ottengo il nome originale dell'img
+            $original_name = $request->file('image')->getClientOriginalName();
+            $form_data['image'] = $image_path;
+            $form_data['image_original_name'] = $original_name;
+        }
+
+
 
         $new_project = new Project();
 
-        $form_data['slug'] = Helper::generateSlug($form_data['title'], new Project());
+        $form_data['slug'] = Helper::generateSlug($form_data['title'], Project::class);
         $new_project->fill($form_data);
         $new_project->save();
 
@@ -64,6 +77,7 @@ class ProjectController extends Controller
     {
         $mod_add_project = 'Modifica progetto:';
         $method = 'PUT';
+        // $project = null;
         $route = route('admin.projects.update', $project);
         return view('admin.projects.create-edit', compact('method', 'route', 'project', 'mod_add_project'));
     }
@@ -75,10 +89,21 @@ class ProjectController extends Controller
     {
         $form_data = $request->all();
 
-        if ($form_data['title'] === $project->title) {
-            $form_data['slug'] = $project->slug;
+        if ($form_data['title'] != $project->title) {
+            $form_data['slug'] = Helper::generateSlug($form_data['title'], Project::class);
         } else {
-            $form_data['slug'] = Helper::generateSlug($form_data['title'], new Project());
+            $form_data['slug'] = $project->slug;
+        }
+
+        if (array_key_exists('image', $form_data)) {
+            //salvo l'immagine nello storage e ottengo il percorso
+            $image_path = Storage::put('uploads', $form_data['image']);
+
+
+            // ottengo il nome originale dell'img
+            $original_name = $request->file('image')->getClientOriginalName();
+            $form_data['image'] = $image_path;
+            $form_data['image_original_name'] = $original_name;
         }
 
         // effettua il fill dei dati e li salva aggiornando il db

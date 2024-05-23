@@ -10,7 +10,8 @@
             <h2 class="mb-5">Ultimo progetto:</h2>
             <h3 class="text-danger"> {{ $last_project->title }} </h3>
             <div class="">
-                <img class="img-show" src="{{ $last_project->image }}" alt="">
+                <img class="img-fluid img-show" src="{{ asset('storage/' . $last_project->image) }}"
+                    alt="{{ $last_project->title }}" onerror="this.src='/img/no-image.png'">
                 <p>{{ $last_project->description }} </p>
             </div>
         </div>

@@ -3,10 +3,12 @@
     <nav class="navbar bg-dark navbar-dark text-white">
         <div class="container-fluid">
             <div class="d-flex">
-                <a href=" {{ route('admin.home') }} " class="navbar-brand">Home</a>
-                <a href=" {{ route('home') }} " target="_blank" class="nav-link pt-2 me-3 btn ">Vai al
+                <a href=" {{ route('admin.home') }} " class="navbar-brand">HOME</a>
+                <a href=" {{ route('home') }} " target="_blank" class="nav-link pt-2 me-3 btn "><span class="me-1"><i
+                            class="fa-solid fa-globe"></i></span>Vai al
                     sito</a>
-                <a href=" {{ route('admin.projects.index') }} " target="_blank" class="nav-link pt-2 ">I miei
+                <a href=" {{ route('admin.projects.index') }} " target="_blank" class="nav-link pt-2 "><span
+                        class="me-1"><i class="fa-regular fa-folder-open"></i></span>I miei
                     progetti</a>
             </div>
             <div class="d-flex align-items-center">

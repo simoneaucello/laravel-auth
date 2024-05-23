@@ -6,6 +6,11 @@ header{
 
 .main-wrapper{
     height: calc(100vh - 70px);
+    .content{
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
 }
 
 aside{
@@ -30,11 +35,11 @@ aside{
 
 .crud-table{
     td:first-child{
-        width: 300px;
+        // width: 300px;
     }
     input{
         border: none;
-        outline: none !important;
+        // outline: none !important;
     }
 
 }
@@ -45,5 +50,10 @@ aside{
 
 .img-show{
     width: 500px;
+}
+
+.thumb{
+    width: 200px;
+    margin-top: 10px;
 }
 
